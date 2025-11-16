@@ -1,0 +1,17 @@
+# Airflow-specific
+logs/
+dags/__pycache__/
+*.pyc
+__pycache__/
+.env
+*.db
+*.sqlite
+
+# Docker
+*.pid
+*.log
+*.out
+
+# macOS
+.DS_Store
+
