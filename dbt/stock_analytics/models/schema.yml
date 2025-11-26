@@ -1,0 +1,41 @@
+version: 2
+
+sources:
+  - name: raw
+    database: USER_DB_PANDA
+    schema: RAW
+    tables:
+      - name: two_stock_v2
+        description: "Raw stock prices loaded from yfinance."
+        columns:
+          - name: symbol
+            tests: [not_null]
+          - name: date
+            tests: [not_null]
+
+models:
+  - name: stg_stock_data
+    description: "Cleans and standardizes raw stock data from yfinance."
+    tests:
+      - unique_symbol_date
+      #- unique:
+         # arguments:
+            #combination_of_columns: [symbol, date]
+    columns:
+      - name: symbol
+        tests: [not_null]
+      - name: date
+        tests: [not_null]
+
+  - name: fct_stock_metrics
+    description: "Fact table containing derived metrics like moving averages and daily percent change."
+    tests:
+      - unique_symbol_date
+     # - unique:
+          #arguments:
+            #combination_of_columns: [symbol, date]
+    columns:
+      - name: symbol
+        tests: [not_null]
+      - name: date
+        tests: [not_null]
