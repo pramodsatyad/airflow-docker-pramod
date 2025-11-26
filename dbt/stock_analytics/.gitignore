@@ -1,0 +1,18 @@
+# --- dbt build artifacts ---
+target/
+dbt_packages/
+logs/
+
+# --- OS / editor junk ---
+.DS_Store
+*.pyc
+__pycache__/
+.vscode/
+.idea/
+
+# --- Secrets (if you accidentally store them here) ---
+profiles.yml
+.env
+
+# --- Temporary / local runs ---
+*.log
